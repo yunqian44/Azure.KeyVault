@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure.KeyVault", "Azure.KeyVault\Azure.KeyVault.csproj", "{511C1B99-79B0-4402-AD9D-3D3B4CCECEA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.KeyVault", "Azure.KeyVault\Azure.KeyVault.csproj", "{511C1B99-79B0-4402-AD9D-3D3B4CCECEA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure.KeyVault.WebApp", "Azure.KeyVault.WebApp\Azure.KeyVault.WebApp.csproj", "{7A3F7D97-D906-4DE5-A7BB-9E9D9C472475}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{511C1B99-79B0-4402-AD9D-3D3B4CCECEA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{511C1B99-79B0-4402-AD9D-3D3B4CCECEA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{511C1B99-79B0-4402-AD9D-3D3B4CCECEA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A3F7D97-D906-4DE5-A7BB-9E9D9C472475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A3F7D97-D906-4DE5-A7BB-9E9D9C472475}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A3F7D97-D906-4DE5-A7BB-9E9D9C472475}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A3F7D97-D906-4DE5-A7BB-9E9D9C472475}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
