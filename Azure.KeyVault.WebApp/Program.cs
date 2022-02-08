@@ -20,7 +20,9 @@ namespace Azure.KeyVault.WebApp
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder
+                    .UseUrls("https://*:9004")
+                    .UseStartup<Startup>();
                 });
     }
 }
