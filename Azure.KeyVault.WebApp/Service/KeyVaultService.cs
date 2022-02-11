@@ -1,4 +1,5 @@
 ﻿using Microsoft.Azure.KeyVault;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,17 +9,16 @@ namespace Azure.KeyVault.WebApp.Service
 {
     public class KeyVaultService: IKeyVaultService
     {
-        private readonly KeyVaultClient _keyVaultClient;
+        private readonly IConfiguration _configuration;
 
-        public KeyVaultService(KeyVaultClient keyVaultClient)
+        public KeyVaultService(IConfiguration configuration)
         {
-            this._keyVaultClient = keyVaultClient;
+            this._configuration = configuration;
         }
 
-        Task<string> IKeyVaultService.GetSecretByKeyAsync(string keyName)
+        public Task<string> GetSecretByKeyAsync(string keyName)
         {
-            _keyVaultClient.GetSecretAsync(keyName);
-            throw new NotImplementedException();
+            return Task.FromResult(_configuration[keyName]);
         }
     }
 }
