@@ -14,9 +14,10 @@ namespace Azure.KeyVault.WebApp.Common
     public class Appsettings
     {
         static IConfiguration Configuration { get; set; }
+
         static string contentPath { get; set; }
 
-        public Appsettings(IWebHostEnvironment Env)
+        public Appsettings(string contentPath)
         {
             //string Path = "appsettings.json";
 
@@ -26,7 +27,7 @@ namespace Azure.KeyVault.WebApp.Common
 
             //var contentPath = env.ContentRootPath;
             Configuration = new ConfigurationBuilder()
-               .SetBasePath(Env.ContentRootPath)
+               .SetBasePath(contentPath)
                .Add(new JsonConfigurationSource { Path = Path, Optional = false, ReloadOnChange = true })//这样的话，可以直接读目录里的json文件，而不是 bin 文件夹下的，所以不用修改复制属性
                .Build();
         }
