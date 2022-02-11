@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
 using System;
 using System.Collections.Generic;
@@ -15,17 +16,17 @@ namespace Azure.KeyVault.WebApp.Common
         static IConfiguration Configuration { get; set; }
         static string contentPath { get; set; }
 
-        public Appsettings(string contentPath)
+        public Appsettings(IWebHostEnvironment Env)
         {
-            string Path = "appsettings.json";
+            //string Path = "appsettings.json";
 
 
             //如果你把配置文件 是 根据环境变量来分开了，可以这样写
-            //string Path = $"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json";
+            string Path = $"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json";
 
             //var contentPath = env.ContentRootPath;
             Configuration = new ConfigurationBuilder()
-               .SetBasePath(contentPath)
+               .SetBasePath(Env.ContentRootPath)
                .Add(new JsonConfigurationSource { Path = Path, Optional = false, ReloadOnChange = true })//这样的话，可以直接读目录里的json文件，而不是 bin 文件夹下的，所以不用修改复制属性
                .Build();
         }
