@@ -1,8 +1,19 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+
 }
+@model List<KeyValueViewModel>;
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1>--------------------- This is line-------------------------</h1>
+    <h2>
+        This is a Azure KeyVault Secret value is:
+    </h2>
+    @foreach(var item in Model)
+    {
+        <p>Key:item.Key;Value:item.Value</p>
+
+    }
 </div>

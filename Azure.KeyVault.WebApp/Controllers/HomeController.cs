@@ -1,4 +1,5 @@
 ﻿using Azure.KeyVault.WebApp.Models;
+using Azure.KeyVault.WebApp.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,14 +14,22 @@ namespace Azure.KeyVault.WebApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IKeyVaultService _keyVaultService;
+
+        public HomeController(ILogger<HomeController> logger,
+            IKeyVaultService keyVaultService)
         {
             _logger = logger;
+            _keyVaultService = keyVaultService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var list = new List<KeyValueViewModel>();
+            list.Add(new KeyValueViewModel() { Key ="cnbate-name", Value = await _keyVaultService.GetSecretByKeyAsync("cnbate-name") });
+            list.Add(new KeyValueViewModel() { Key = "cnbate-num", Value = await _keyVaultService.GetSecretByKeyAsync("cnbate-num") });
+            list.Add(new KeyValueViewModel() { Key = "cnbate-time", Value = await _keyVaultService.GetSecretByKeyAsync("cnbate-time") });
+            return View(list);
         }
 
         public IActionResult Privacy()
