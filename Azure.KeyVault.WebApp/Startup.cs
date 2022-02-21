@@ -1,5 +1,6 @@
 using Azure.Identity;
 using Azure.KeyVault.WebApp.Common;
+using Azure.KeyVault.WebApp.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Azure.KeyVault;
@@ -29,6 +30,8 @@ namespace Azure.KeyVault.WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddScoped<IKeyVaultService, KeyVaultService>();
             services.AddControllersWithViews();
         }
 
