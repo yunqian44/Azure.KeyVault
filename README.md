@@ -19,13 +19,13 @@ This example provides include:
 
 2. setings service principal Environment Variables on Windows System PC
 
-    `setx ARM_SUBSCRIPTION_ID xxxx-xxxx-xxxx-xxxx`
+    `setx ARM_SUBSCRIPTION_ID xxxx-xxxx-xxxx-xxxx` (optional)
 
     `setx ARM_CLIENT_ID xxxx-xxxx-xxxx-xxxx`    
 
     `setx ARM_CLIENT_SECRET xxxx-xxxx-xxxx-xxxx`
 
-    `setx ARM_TENANT_ID xxxx-xxxx-xxxx-xxxx`(optional)
+    `setx ARM_TENANT_ID xxxx-xxxx-xxxx-xxxx`
 
 ## Use this doc and get your NET Core Web App Add Azure Key Vault Service on!
 
