@@ -16,11 +16,15 @@ namespace Azure.KeyVault.WebApp.Controllers
 
         private readonly IKeyVaultService _keyVaultService;
 
+        private readonly ISecretsService _secretsService;
+
         public HomeController(ILogger<HomeController> logger,
-            IKeyVaultService keyVaultService)
+            IKeyVaultService keyVaultService,
+            ISecretsService secretsService)
         {
             _logger = logger;
             _keyVaultService = keyVaultService;
+            _secretsService = secretsService;
         }
 
         public async Task<IActionResult> Index()
@@ -29,6 +33,11 @@ namespace Azure.KeyVault.WebApp.Controllers
             list.Add(new KeyValueViewModel() { Key ="cnbate-name", Value = await _keyVaultService.GetSecretByKeyAsync("cnbate-name") });
             list.Add(new KeyValueViewModel() { Key = "cnbate-num", Value = await _keyVaultService.GetSecretByKeyAsync("cnbate-num") });
             list.Add(new KeyValueViewModel() { Key = "cnbate-time", Value = await _keyVaultService.GetSecretByKeyAsync("cnbate-time") });
+
+            list.Add(new KeyValueViewModel() { Key = "cnbate-name", Value = await _secretsService.GetSecretsAsync("cnbate-name") });
+            list.Add(new KeyValueViewModel() { Key = "cnbate-num", Value = await _secretsService.GetSecretsAsync("cnbate-num") });
+            list.Add(new KeyValueViewModel() { Key = "cnbate-time", Value = await _secretsService.GetSecretsAsync("cnbate-time") });
+
             return View(list);
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Azure.Security.KeyVault.Secrets;
+using System.Threading.Tasks;
 
 namespace Azure.KeyVault.WebApp.Service
 {
