@@ -1,12 +1,21 @@
-﻿using System.Threading.Tasks;
+﻿using Azure.Security.KeyVault.Secrets;
+using System.Threading.Tasks;
 
 namespace Azure.KeyVault.WebApp.Service
 {
     public class SecretsService : ISecretsService
     {
-        public Task<string> GetSecretsAsync(string key)
+        private readonly SecretClient _secretClient;
+
+        public SecretsService(SecretClient secretClient)
         {
-            throw new System.NotImplementedException();
+            this._secretClient = secretClient;
+        }
+
+        public async Task<string> GetSecretsAsync(string key)
+        {
+            var secret= await _secretClient.GetSecretAsync(key);
+            return secret.Value.Value;
         }
     }
 }
