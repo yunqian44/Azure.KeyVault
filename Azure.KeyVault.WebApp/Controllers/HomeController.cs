@@ -46,6 +46,21 @@ namespace Azure.KeyVault.WebApp.Controllers
             return View();
         }
 
+
+        public async Task<IActionResult> Secrets()
+        {
+            var list = new List<KeyValueViewModel>();
+            list.Add(new KeyValueViewModel() { Key = "cnbate-name", Value = await _keyVaultService.GetSecretByKeyAsync("cnbate-name") });
+            list.Add(new KeyValueViewModel() { Key = "cnbate-num", Value = await _keyVaultService.GetSecretByKeyAsync("cnbate-num") });
+            list.Add(new KeyValueViewModel() { Key = "cnbate-time", Value = await _keyVaultService.GetSecretByKeyAsync("cnbate-time") });
+
+            list.Add(new KeyValueViewModel() { Key = "cnbate-name", Value = await _secretsService.GetSecretsAsync("cnbate-name") });
+            list.Add(new KeyValueViewModel() { Key = "cnbate-num", Value = await _secretsService.GetSecretsAsync("cnbate-num") });
+            list.Add(new KeyValueViewModel() { Key = "cnbate-time", Value = await _secretsService.GetSecretsAsync("cnbate-time") });
+
+            return View(list);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
