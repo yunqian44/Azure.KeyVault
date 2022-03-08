@@ -33,9 +33,9 @@ namespace Azure.KeyVault.WebApp
         {
             // Method 1
             services.AddSingleton(new Appsettings(Env.ContentRootPath));
-            //services.AddSingleton(x => new SecretClient(vaultUri: new Uri(Appsettings.app("AzureKeyVault", "Endpoint")), credential: new DefaultAzureCredential()));
+            services.AddSingleton(x => new SecretClient(vaultUri: new Uri(Appsettings.app("AzureKeyVault", "Endpoint")), credential: new DefaultAzureCredential()));
 
-            services.AddSingleton(x => new SecretClient(new Uri(Appsettings.app("AzureKeyVault", "Endpoint")),new DefaultAzureCredential()));
+            //services.AddSingleton(x => new SecretClient(new Uri(Appsettings.app("AzureKeyVault", "Endpoint")),new DefaultAzureCredential()));
 
             // Method 2
             //services.AddSingleton(x => new SecretClient(Configuration.GetValue<string>("AzureBlobStorageConnectionString"),));
